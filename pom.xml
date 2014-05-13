@@ -32,11 +32,34 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.0.201403182114</version>
+
+				<configuration>
+					<destFile>${basedir}/target/jacoco/${project.artifactId}.jacoco.exec</destFile>
+					<dataFile>${basedir}/target/jacoco/${project.artifactId}.jacoco.exec</dataFile>
+					<includes>
+						<include>io.github.sealor.*</include>
+					</includes>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
 	<modules>
 		<module>prototype-Maven-JaCoCo-module1</module>
 		<module>prototype-Maven-JaCoCo-module2</module>
+		<module>prototype-Maven-JaCoCo-test-coverage</module>
 	</modules>
 </project>
